@@ -1,5 +1,7 @@
 # Golf Charity Subscription Platform
 
+Production-grade full-stack system with real-world business logic, admin workflows, and scalable architecture.
+
 ![React](https://img.shields.io/badge/Frontend-React-blue)
 ![Node.js](https://img.shields.io/badge/Backend-Node.js-green)
 ![MongoDB](https://img.shields.io/badge/Database-MongoDB-brightgreen)
