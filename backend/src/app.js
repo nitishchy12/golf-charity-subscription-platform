@@ -17,11 +17,25 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-const allowedOrigins = process.env.CLIENT_URL ? process.env.CLIENT_URL.split(",") : [];
+const defaultOrigins = [
+  "http://localhost:5173",
+  "https://golf-charity-subscription-platform-nu.vercel.app"
+];
+const configuredOrigins = process.env.CLIENT_URL
+  ? process.env.CLIENT_URL.split(",").map((origin) => origin.trim()).filter(Boolean)
+  : [];
+const allowedOrigins = [...new Set([...defaultOrigins, ...configuredOrigins])];
 
 app.use(
   cors({
-    origin: allowedOrigins.length ? allowedOrigins : true,
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+        return;
+      }
+
+      callback(new Error(`CORS blocked for origin: ${origin}`));
+    },
     credentials: true
   })
 );
