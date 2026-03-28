@@ -1,83 +1,91 @@
 # Golf Charity Subscription Platform
 
-Production-grade full-stack system with real-world business logic, admin workflows, and scalable architecture.
-
-![React](https://img.shields.io/badge/Frontend-React-blue)
-![Node.js](https://img.shields.io/badge/Backend-Node.js-green)
-![MongoDB](https://img.shields.io/badge/Database-MongoDB-brightgreen)
-![JWT](https://img.shields.io/badge/Auth-JWT-orange)
-![Status](https://img.shields.io/badge/Project-Production--Ready-success)
-
-## Project Overview
-
-A full-stack production-ready web application that enables users to track golf scores, participate in monthly prize draws, and contribute to charitable causes. The platform includes a complete admin system for managing users, draws, and payouts.
-
-Key Highlights:
-- Role-based authentication (User and Admin)
-- Real-time score tracking with last-5 logic
-- Monthly draw system with prize distribution
-- Charity contribution integration
-- End-to-end user and admin workflows
+A full-stack MERN application that combines golf scoring, subscription-based rewards, and charitable contributions into a unified platform.
 
 ## Live Demo
 
-- Frontend: https://your-vercel-link
-- Backend: https://your-backend-link
+Frontend (Vercel):
+https://golf-charity-subscription-platform-nu.vercel.app
 
-## Source Code
+Backend API (Render):
+https://golf-charity-backend-pmy5.onrender.com
 
-- GitHub: https://github.com/nitishchy12/golf-charity-subscription-platform
+## Features
+
+Authentication
+- User signup and login
+- JWT-based authentication
+- Secure session handling
+
+Membership System
+- Monthly subscription model
+- Mock billing activation
+- Plan selection and management
+
+Charity Integration
+- Select a charity during signup
+- Contribution percentage tracking
+- Real-time charity data from backend
+
+Golf Score Tracking
+- Add scores from 1 to 45
+- Stores last 5 scores
+- Auto-replacement of oldest entries
+
+Dashboard
+- Subscription status
+- Tracked scores
+- Wins and earnings
+- Charity contribution overview
 
 ## Tech Stack
 
-Frontend:
-- React.js
-- Vite
+Frontend
+- React.js (Vite)
 - Tailwind CSS
+- Axios
 
-Backend:
+Backend
 - Node.js
 - Express.js
 - MongoDB (Mongoose)
 
-Other:
-- JWT Authentication
-- REST APIs
-- Vercel (Frontend Deployment)
-- Render or Railway (Backend Deployment)
+Deployment
+- Frontend: Vercel
+- Backend: Render
+- Database: MongoDB Atlas
 
-## Core Features
+## Environment Variables
 
-- Secure authentication using JWT
-- Role-based access control (Admin and User)
-- Last-5 score tracking system with auto-replacement logic
-- Monthly draw generation with random number algorithm
-- Prize distribution based on match count (3, 4, 5 matches)
-- Charity contribution system with minimum percentage validation
-- Winner verification and admin payout workflow
+Frontend (`.env`)
+```env
+VITE_API_URL=https://golf-charity-backend-pmy5.onrender.com
+```
 
-## Why This Project Stands Out
+Backend (`.env`)
+```env
+PORT=5000
+MONGODB_URI=your_mongodb_connection
+JWT_SECRET=your_secret
+JWT_EXPIRES_IN=7d
+CLIENT_URL=https://golf-charity-subscription-platform-nu.vercel.app
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=admin123
+```
 
-- Implements real-world business logic beyond basic CRUD
-- Demonstrates role-based system design (Admin and User workflows)
-- Includes complete end-to-end flow: authentication to action to admin control to result
-- Focused on scalability and clean architecture with a modular backend and structured frontend
-- Built with production mindset, not just a demo project
+## Key Challenges Solved
 
-## Quick Setup
+- Fixed CORS issues between Vercel and Render
+- Resolved API route mismatches (`/charities` vs `/api/charities`)
+- Handled SPA routing and refresh 404 issues
+- Implemented robust API client with URL normalization
+- Prevented infinite loading states with timeout handling
 
-1. Clone the repository.
-2. Create `backend/.env` from `backend/.env.example`.
-3. Create `frontend/.env` from `frontend/.env.example`.
-4. Run `npm install` from the project root.
-5. Start backend with `npm run dev --workspace backend`.
-6. Start frontend with `npm run dev --workspace frontend`.
+## Screens
 
-## Important Routes
-
-- User signup and login
-- Admin dashboard and draw execution
-- User dashboard with scores, winnings, and charity selection
+- Signup with charity selection
+- User dashboard with analytics
+- Score tracking interface
 
 ## Screenshots
 
@@ -87,22 +95,9 @@ Other:
 ### Admin Panel
 ![Admin](./screenshots/admin.png)
 
-## Deployment
+## Future Improvements
 
-Frontend:
-- Deploy the `frontend` app to Vercel
-- Set `VITE_API_URL` to your backend API URL
-
-Backend:
-- Deploy the `backend` app to Render or Railway
-- Add environment variables from `backend/.env.example`
-- Use MongoDB Atlas for production deployment
-
-## Project Status
-
-- Authentication system implemented
-- Score tracking logic working
-- Admin panel functional
-- Draw system implemented
-- End-to-end flow tested
-- Deployment ready
+- Payment gateway integration (Stripe)
+- Real-time leaderboard
+- Admin analytics dashboard
+- Email notifications
