@@ -1,4 +1,4 @@
-# Golf Charity Subscription Platform
+# Golf Charity Subscription Platform (Full-Stack MERN with Real-Time Dashboard & Charity Integration)
 
 Production-grade full-stack system with real-world business logic, admin workflows, and scalable architecture.
 
@@ -22,6 +22,18 @@ A full-stack MERN application that combines golf scoring, subscription-based rew
 - Covers the full product loop from authentication to action to payout control
 - Built with production deployment concerns in mind, including CORS, SPA routing, and API normalization
 - Designed as a scalable portfolio project, not just a demo screen set
+
+## Architecture
+
+Frontend (Vercel)
+?
+Backend API (Render)
+?
+MongoDB Atlas
+
+- REST API communication using Axios
+- JWT-based authentication between client and server
+- Stateless backend with MongoDB persistence
 
 ## Core Features
 
@@ -51,6 +63,24 @@ Dashboard Experience
 - Wins and earnings snapshot
 - Charity contribution summary
 
+## API Endpoints
+
+### Auth
+- POST /api/auth/signup
+- POST /api/auth/login
+
+### Users
+- GET /api/users/me
+
+### Charities
+- GET /api/charities
+
+### Scores
+- POST /api/users/scores
+
+### Admin
+- POST /api/auth/seed-admin
+
 ## Tech Stack
 
 Frontend
@@ -67,6 +97,26 @@ Deployment
 - Frontend: Vercel
 - Backend: Render
 - Database: MongoDB Atlas
+
+## Run Locally
+
+### Clone repo
+```bash
+git clone https://github.com/nitishchy12/golf-charity-subscription-platform
+cd golf-charity-subscription-platform
+```
+
+### Install dependencies
+```bash
+npm install
+npm install --workspace frontend
+npm install --workspace backend
+```
+
+### Run
+```bash
+npm run dev
+```
 
 ## Environment Variables
 
