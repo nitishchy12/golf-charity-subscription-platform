@@ -140,6 +140,18 @@ ADMIN_PASSWORD=admin123
 - Implemented robust API client URL normalization
 - Prevented infinite loading states with timeout handling
 
+## Demo Access
+
+You can test the application using the live demo:
+
+Frontend: https://golf-charity-subscription-platform-nu.vercel.app
+
+- Create a new account using signup
+- Choose a charity and subscription
+- Access the dashboard and explore features
+
+Admin access is restricted for security reasons.
+
 ## Screenshots
 
 ### User Dashboard
