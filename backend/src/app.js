@@ -31,6 +31,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
+app.get("/", (_req, res) => {
+  res.json({
+    success: true,
+    message: "Golf Charity Platform API is running",
+    docs: "/api"
+  });
+});
+
+app.get("/api", (_req, res) => {
+  res.json({
+    success: true,
+    message: "Available API groups",
+    routes: ["/api/health", "/api/auth", "/api/users", "/api/charities", "/api/draws", "/api/admin"]
+  });
+});
+
 app.get("/api/health", (_req, res) => {
   res.json({ success: true, message: "API is healthy" });
 });
@@ -45,4 +61,3 @@ app.use(notFound);
 app.use(errorHandler);
 
 export default app;
-
