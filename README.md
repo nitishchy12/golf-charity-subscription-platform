@@ -25,11 +25,7 @@ A full-stack MERN application that combines golf scoring, subscription-based rew
 
 ## Architecture
 
-Frontend (Vercel)
-?
-Backend API (Render)
-?
-MongoDB Atlas
+Frontend (Vercel) ? Backend API (Render) ? MongoDB Atlas
 
 - REST API communication using Axios
 - JWT-based authentication between client and server
