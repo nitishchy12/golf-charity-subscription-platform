@@ -4,7 +4,8 @@ const rawApiUrl = (import.meta.env.VITE_API_URL || "http://localhost:5000").repl
 const baseURL = rawApiUrl.endsWith("/api") ? rawApiUrl : `${rawApiUrl}/api`;
 
 const api = axios.create({
-  baseURL
+  baseURL,
+  timeout: 15000
 });
 
 api.interceptors.request.use((config) => {

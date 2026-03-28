@@ -23,14 +23,26 @@ const SignupPage = () => {
 
   useEffect(() => {
     const loadCharities = async () => {
+      setCharitiesLoading(true);
       try {
-        const { data } = await charityApi.list();
-        setCharities(data.data);
-        if (data.data[0]) {
-          setForm((current) => ({ ...current, charityId: data.data[0]._id }));
-        }
+        const response = await charityApi.list();
+        const charityList = Array.isArray(response.data?.data)
+          ? response.data.data
+          : Array.isArray(response.data)
+            ? response.data
+            : [];
+
+        setCharities(charityList);
+        setForm((current) => ({
+          ...current,
+          charityId: charityList[0]?._id || ""
+        }));
       } catch (error) {
-        pushToast({ message: error.response?.data?.message || "Could not load charities", variant: "error" });
+        setCharities([]);
+        pushToast({
+          message: error.response?.data?.message || error.message || "Could not load charities",
+          variant: "error"
+        });
       } finally {
         setCharitiesLoading(false);
       }
@@ -58,7 +70,7 @@ const SignupPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (charityUnavailable) {
-      pushToast({ message: "No charities available yet. Restart backend once and try again.", variant: "error" });
+      pushToast({ message: "No charities available yet. Please refresh after the backend loads.", variant: "error" });
       return;
     }
 
@@ -101,7 +113,7 @@ const SignupPage = () => {
                 </option>
               ))}
             </select>
-            {charityUnavailable ? <p className="text-xs text-amber-300">Starter charities will appear after the backend reconnects to MongoDB and boots once.</p> : null}
+            {charityUnavailable ? <p className="text-xs text-amber-300">Starter charities are not available yet or the API response was empty.</p> : null}
             <input className="input" type="number" min="10" max="100" name="charityPercentage" placeholder="Charity %" value={form.charityPercentage} onChange={handleChange} required />
             <select className="input" name="subscriptionType" value={form.subscriptionType} onChange={handleChange}>
               <option value="monthly">Monthly plan</option>
